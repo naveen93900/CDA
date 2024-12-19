@@ -50,4 +50,13 @@ public class UserController {
 		
 	}
 	
+	@GetMapping("/email/{email}")
+	public ResponseEntity<?> findUserByEmail(@PathVariable String email){
+		return service.findUserByEmail(email);
+		
+	}
+	
+	
+	
+	
 }
