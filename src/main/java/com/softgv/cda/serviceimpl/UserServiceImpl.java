@@ -184,4 +184,41 @@ public class UserServiceImpl implements UserService {
 	
 	}
 
+	@Override
+	public ResponseEntity<?> findUserByEmail(String email) {
+        
+		Optional<User> userByEmail = userDao.findUserByEmail(email);
+		if(userByEmail.isEmpty())
+			throw UserNotFoundException.builder().message("Invalid User Email : " + email).build();
+		User user=userByEmail.get();
+		
+		return ResponseEntity.status(HttpStatus.OK).body(ResponseStructure.builder().status(HttpStatus.OK.value())
+				.message("User Found Successfully...").body(user).build());
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+	
+	
+
 }
+
+
+
+
+
+
+
+
+
+
